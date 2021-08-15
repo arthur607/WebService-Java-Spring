@@ -22,6 +22,10 @@ public class User implements Serializable {
     private String email;
     private String password;
 
+    public User(){
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

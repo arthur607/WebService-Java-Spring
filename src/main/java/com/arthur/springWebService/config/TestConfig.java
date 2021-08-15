@@ -25,5 +25,7 @@ public class TestConfig implements CommandLineRunner {
         list.add(new User(null,"Pedro","pedro@luiz.com","54321"));
 
         userRepository.saveAll(Arrays.asList(list.get(0),list.get(1)));
+       // userRepository.saveAll(list);
+
     }
 }
