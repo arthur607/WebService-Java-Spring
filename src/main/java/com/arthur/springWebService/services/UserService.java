@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 
 
 @Service
@@ -21,4 +22,9 @@ public class UserService {
         Optional<User> obj = userRepository.findById(id);
         return obj.get();
     }
+   // public User findById1(Long id){
+    //    Optional<User> obj = userRepository.findById(id);
+     //   Function<Optional<User>, User> buscarUser = idUsuario -> new User();
+     //   return buscarUser.apply(obj);
+   // }
 }
