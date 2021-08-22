@@ -1,18 +1,15 @@
 package com.arthur.springWebService.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 import sun.security.util.Password;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-
-@Data
-@AllArgsConstructor
+@ToString
+@Table(name = "tb_user")
 @Entity                                                     //mapping entity in repository
 public class User implements Serializable {
     @Id
@@ -21,6 +18,17 @@ public class User implements Serializable {
     private String nome;
     private String email;
     private String password;
+    @OneToMany(mappedBy = "client")
+    @Setter(value = AccessLevel.NONE)
+
+    private List<Order> orderList = new ArrayList<>();
+
+    public User(Long id, String nome, String email, String password) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.password = password;
+    }
 
     public User(){
 
