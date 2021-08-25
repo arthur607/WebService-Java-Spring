@@ -8,6 +8,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+@Data
+@AllArgsConstructor
 @ToString
 @Table(name = "tb_user")
 @Entity                                                     //mapping entity in repository
@@ -18,10 +20,10 @@ public class User implements Serializable {
     private String nome;
     private String email;
     private String password;
-    @OneToMany(mappedBy = "client")
-    @Setter(value = AccessLevel.NONE)
 
-    private List<Order> orderList = new ArrayList<>();
+    @OneToMany(mappedBy = "client")
+    @Setter(value =AccessLevel.NONE)
+    private List<Order> orders = new ArrayList<>();
 
     public User(Long id, String nome, String email, String password) {
         this.id = id;

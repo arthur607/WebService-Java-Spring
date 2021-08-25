@@ -9,6 +9,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/orders")
 public class OrderController {
 
-    @Autowired
-    private Order order;
 }

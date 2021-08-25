@@ -20,7 +20,7 @@ public class TestConfig implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        List<User> list = new ArrayList<User>();
+        List<User> list = new ArrayList<>();
         list.add(new User(null,"Arthur","arthur@garcia.com","12345"));
         list.add(new User(null,"Pedro","pedro@luiz.com","54321"));
 
