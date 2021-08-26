@@ -1,5 +1,6 @@
 package com.arthur.springWebService.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import sun.security.util.Password;
 
@@ -23,6 +24,7 @@ public class User implements Serializable {
 
     @OneToMany(mappedBy = "client")
     @Setter(value =AccessLevel.NONE)
+    @JsonIgnore
     private List<Order> orders = new ArrayList<>();
 
     public User(Long id, String nome, String email, String password) {

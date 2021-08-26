@@ -28,7 +28,6 @@ public class TestConfig implements CommandLineRunner {
         List<User> list = new ArrayList<>();
         list.add(new User(null,"Arthur","arthur@garcia.com","12345"));
         list.add(new User(null,"Pedro","pedro@luiz.com","54321"));
-
         List<Order> listOrder = new ArrayList<>();
         listOrder.add(new Order(null, Instant.now(),list.get(1)));
 
