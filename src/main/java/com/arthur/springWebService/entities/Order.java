@@ -1,5 +1,6 @@
 package com.arthur.springWebService.entities;
 
+import com.arthur.springWebService.entities.enums.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -20,6 +21,10 @@ public class Order implements Serializable {
      @ManyToOne
      @JoinColumn(name = "client_id")
      private User client;
+
+     private OrderStatus orderStatus;
+
+
 
      public  Order(){
 
