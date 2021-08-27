@@ -24,11 +24,6 @@ public class OrderService {
         Optional<Order> obj = orderRepository.findById(id);
         return obj.get();
     }
-   // public User findById1(Long id){
-    //    Optional<User> obj = userRepository.findById(id);
-     //   Function<Optional<User>, User> buscarUser = idUsuario -> new User();
-     //   return buscarUser.apply(obj);
-   // }
 
 
 }

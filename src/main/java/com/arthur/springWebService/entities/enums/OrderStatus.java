@@ -13,7 +13,6 @@ public enum OrderStatus {
     private OrderStatus(int code){
         this.code = code;
     }
-
     public int getCode(){
         return code;
     }
@@ -26,5 +25,4 @@ public enum OrderStatus {
         }
         throw new IllegalArgumentException("Invalid OrderStatus code");
     }
-
 }
