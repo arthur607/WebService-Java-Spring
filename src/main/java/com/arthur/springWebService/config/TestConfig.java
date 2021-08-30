@@ -2,10 +2,12 @@ package com.arthur.springWebService.config;
 
 import com.arthur.springWebService.entities.Category;
 import com.arthur.springWebService.entities.Order;
+import com.arthur.springWebService.entities.Product;
 import com.arthur.springWebService.entities.User;
 import com.arthur.springWebService.entities.enums.OrderStatus;
 import com.arthur.springWebService.repositories.CategoryRepository;
 import com.arthur.springWebService.repositories.OrderRepository;
+import com.arthur.springWebService.repositories.ProductRepository;
 import com.arthur.springWebService.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -27,6 +29,8 @@ public class TestConfig implements CommandLineRunner {
     private OrderRepository orderRepository;
     @Autowired
     private CategoryRepository categoryRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -37,12 +41,17 @@ public class TestConfig implements CommandLineRunner {
         List<User> list = new ArrayList<>();
         list.add(new User(null,"Arthur","arthur@garcia.com","12345"));
         list.add(new User(null,"Pedro","pedro@luiz.com","54321"));
+
         List<Order> listOrder = new ArrayList<>();
         listOrder.add(new Order(null, Instant.now(),list.get(1), OrderStatus.PAID));
+
+        List<Product> listProduct = new ArrayList<>();
+        listProduct.add(new Product(null,"Saia Gaya","Linda Saia cor preta",100.0,"teste.img"));
 
         userRepository.saveAll(Arrays.asList(list.get(0),list.get(1)));
         orderRepository.saveAll(listOrder);
         categoryRepository.saveAll(listCategory);
+        productRepository.saveAll(listProduct);
 
     }
 }
