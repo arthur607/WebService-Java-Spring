@@ -48,6 +48,9 @@ public class TestConfig implements CommandLineRunner {
         List<Product> listProduct = new ArrayList<>();
         listProduct.add(new Product(null,"Saia Gaya","Linda Saia cor preta",100.0,"teste.img"));
 
+//        listProduct.get(0).getCategories().add(listCategory.get(1));    infinity loop in join table
+//        listProduct.get(0).getCategories().add(listCategory.get(0));
+
         userRepository.saveAll(Arrays.asList(list.get(0),list.get(1)));
         orderRepository.saveAll(listOrder);
         categoryRepository.saveAll(listCategory);

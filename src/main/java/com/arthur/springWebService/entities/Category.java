@@ -1,5 +1,7 @@
 package com.arthur.springWebService.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,7 +18,8 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @ManyToMany
+    @JsonIgnoreProperties("categories")
+    @ManyToMany(mappedBy = "categories")
     @Setter(AccessLevel.NONE)
     private Set<Product> products = new HashSet<>();
 

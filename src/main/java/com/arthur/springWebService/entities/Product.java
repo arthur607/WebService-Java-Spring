@@ -3,6 +3,8 @@ package com.arthur.springWebService.entities;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -25,8 +27,14 @@ public class Product implements Serializable {
     private String description;
     private Double price;
     private String imgUrl;
+    @JsonIgnoreProperties("products")
     @Setter(AccessLevel.NONE)
     @ManyToMany
+    @JoinTable(
+            name = "tb_product_category",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+            )
     private Set<Category> categories = new HashSet<>();
 
     public Product(){}
