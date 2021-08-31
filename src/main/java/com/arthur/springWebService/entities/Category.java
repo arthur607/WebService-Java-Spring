@@ -18,10 +18,6 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @JsonIgnoreProperties("categories")
-    @ManyToMany(mappedBy = "categories")
-    @Setter(AccessLevel.NONE)
-    private Set<Product> products = new HashSet<>();
 
     public Category(Long id, String name) {
         this.id = id;
