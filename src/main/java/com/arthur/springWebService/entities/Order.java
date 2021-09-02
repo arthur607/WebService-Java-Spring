@@ -8,6 +8,9 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 @AllArgsConstructor
 @EqualsAndHashCode
@@ -22,9 +25,22 @@ public class Order implements Serializable {
      @JoinColumn(name = "client_id")
      private User client;
 
+     @OneToMany(mappedBy = "id.order")
+     private Set<OrderItem> items = new HashSet<>();
      private OrderStatus orderStatus;
 
      public  Order(){
 
+     }
+
+     public Order(Long id, Instant instant, User client, OrderStatus orderStatus) {
+          this.id = id;
+          this.instant = instant;
+          this.client = client;
+          this.orderStatus = orderStatus;
+     }
+
+     public Set<OrderItem> getItems(){
+          return items;
      }
 }
