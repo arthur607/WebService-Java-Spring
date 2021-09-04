@@ -49,6 +49,9 @@ public class TestConfig implements CommandLineRunner {
 
         OrderItem orderOne = new OrderItem(listOrder.get(0),listProduct.get(0),2,listProduct.get(0).getPrice());
 
+        Payment pay1 = new Payment(null, Instant.now(),listOrder.get(0));
+        listOrder.get(0).setPayment(pay1);
+
         userRepository.saveAll(Arrays.asList(list.get(0),list.get(1)));
         orderRepository.saveAll(listOrder);
         categoryRepository.saveAll(listCategory);

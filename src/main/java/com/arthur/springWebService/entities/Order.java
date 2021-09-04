@@ -28,6 +28,8 @@ public class Order implements Serializable {
      @OneToMany(mappedBy = "id.order")
      private Set<OrderItem> items = new HashSet<>();
      private OrderStatus orderStatus;
+     @OneToOne(mappedBy = "order",cascade = CascadeType.ALL)
+     private Payment payment;
 
      public  Order(){
 
