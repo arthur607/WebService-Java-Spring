@@ -1,5 +1,6 @@
 package com.arthur.springWebService.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +21,7 @@ public class Payment implements Serializable {
     private Instant moment;
     @OneToOne
     @MapsId
+    @JsonIgnore
     private Order order;
 
     public Payment() {

@@ -1,6 +1,8 @@
 package com.arthur.springWebService.entities;
 
 import com.arthur.springWebService.entities.enums.OrderStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -24,12 +26,20 @@ public class Order implements Serializable {
      @ManyToOne
      @JoinColumn(name = "client_id")
      private User client;
-
+     @JsonIgnoreProperties
      @OneToMany(mappedBy = "id.order")
      private Set<OrderItem> items = new HashSet<>();
      private OrderStatus orderStatus;
      @OneToOne(mappedBy = "order",cascade = CascadeType.ALL)
      private Payment payment;
+
+     public Double getTotal(){
+          double total = 0.0;
+          for (OrderItem x : items){
+               total += x.getSubTotal();
+          }
+          return total;
+     }
 
      public  Order(){
 
