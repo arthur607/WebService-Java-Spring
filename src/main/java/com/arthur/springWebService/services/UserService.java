@@ -4,6 +4,7 @@ import com.arthur.springWebService.entities.User;
 import com.arthur.springWebService.exception.ResourceNotFoundException;
 import com.arthur.springWebService.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -35,7 +36,12 @@ public class UserService {
     }
 
     public void delete(Long id){
-        userRepository.deleteById(id);
+        try {
+            userRepository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+           throw new ResourceNotFoundException(id);
+        }
+
     }
     public User update(Long id, User obj){
         User entity = userRepository.getById(id);
